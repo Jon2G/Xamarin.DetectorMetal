@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts;assembly=Microcharts" 
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="MetalDetector.PaginaPrincipal" x:Name="Me">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout BindingContext="{Binding Source={Reference Me},Path=MetalDetector}"
+                     VerticalOptions="CenterAndExpand" 
+                     HorizontalOptions="CenterAndExpand">
+
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="5" >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" Padding="10" Spacing="5">
+                            <Label Text="{Binding X,StringFormat='X: {0:N3}',Mode=OneWay}" FontSize="Medium"/>
+                            <Label Text="{Binding Y,StringFormat='Y: {0:N3}',Mode=OneWay}" FontSize="Medium"/>
+                            <Label Text="{Binding Z,StringFormat='Z: {0:N3}',Mode=OneWay}" FontSize="Medium"/>
+                        </StackLayout>
+                        <Label Text="{Binding MetalPower,StringFormat='Campo magnetico {0:N3} µ',Mode=OneWay}"
+                           FontSize="Large"
+                           VerticalOptions="EndAndExpand" 
+                           HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </Frame>
+
+                <Button Text="Iniciar" Clicked="Button_Iniciar"/>
+                <Button Text="Detener" Clicked="Button_Detener"/>
+            </StackLayout>
+            <forms:ChartView VerticalOptions="FillAndExpand" Chart="{Binding Chart}" BindingContext="{Binding Source={Reference Me},Path=MetalDetector}"/>
+            <Label Text="García García Jonathan Eduardo" FontSize="Small" VerticalOptions="End" HorizontalOptions="End"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
